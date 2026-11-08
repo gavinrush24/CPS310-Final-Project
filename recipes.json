@@ -1,0 +1,277 @@
+[
+  {
+    "name": "Chicken Alfredo",
+    "category": "Dinner",
+    "servings": 4,
+    "prep_time": 15,
+    "cook_time": 25,
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 1.5,
+        "unit": "lb"
+      },
+      {
+        "name": "fettuccine",
+        "quantity": 12,
+        "unit": "oz"
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "name": "parmesan cheese",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Turkey Taco Bowls",
+    "category": "Dinner",
+    "servings": 4,
+    "prep_time": 10,
+    "cook_time": 20,
+    "ingredients": [
+      {
+        "name": "ground turkey",
+        "quantity": 1,
+        "unit": "lb"
+      },
+      {
+        "name": "rice",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "name": "black beans",
+        "quantity": 1,
+        "unit": "can"
+      },
+      {
+        "name": "salsa",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Greek Yogurt Parfait",
+    "category": "Breakfast",
+    "servings": 1,
+    "prep_time": 5,
+    "cook_time": 0,
+    "ingredients": [
+      {
+        "name": "greek yogurt",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "berries",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "granola",
+        "quantity": 0.25,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Veggie Omelet",
+    "category": "Breakfast",
+    "servings": 1,
+    "prep_time": 5,
+    "cook_time": 10,
+    "ingredients": [
+      {
+        "name": "eggs",
+        "quantity": 3,
+        "unit": "whole"
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 0.5,
+        "unit": "whole"
+      },
+      {
+        "name": "spinach",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Chicken Caesar Wrap",
+    "category": "Lunch",
+    "servings": 2,
+    "prep_time": 10,
+    "cook_time": 10,
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 0.75,
+        "unit": "lb"
+      },
+      {
+        "name": "tortillas",
+        "quantity": 2,
+        "unit": "whole"
+      },
+      {
+        "name": "romaine lettuce",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "name": "caesar dressing",
+        "quantity": 0.25,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Tomato Basil Pasta",
+    "category": "Dinner",
+    "servings": 4,
+    "prep_time": 10,
+    "cook_time": 20,
+    "ingredients": [
+      {
+        "name": "pasta",
+        "quantity": 12,
+        "unit": "oz"
+      },
+      {
+        "name": "crushed tomatoes",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "name": "basil",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "name": "parmesan cheese",
+        "quantity": 0.5,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Peanut Butter Banana Oatmeal",
+    "category": "Breakfast",
+    "servings": 1,
+    "prep_time": 5,
+    "cook_time": 5,
+    "ingredients": [
+      {
+        "name": "oats",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "banana",
+        "quantity": 1,
+        "unit": "whole"
+      },
+      {
+        "name": "peanut butter",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "name": "milk",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Black Bean Quesadillas",
+    "category": "Lunch",
+    "servings": 2,
+    "prep_time": 10,
+    "cook_time": 10,
+    "ingredients": [
+      {
+        "name": "tortillas",
+        "quantity": 2,
+        "unit": "whole"
+      },
+      {
+        "name": "black beans",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "salsa",
+        "quantity": 0.5,
+        "unit": "cup"
+      }
+    ]
+  },
+  {
+    "name": "Honey Garlic Salmon",
+    "category": "Dinner",
+    "servings": 4,
+    "prep_time": 10,
+    "cook_time": 15,
+    "ingredients": [
+      {
+        "name": "salmon",
+        "quantity": 1.5,
+        "unit": "lb"
+      },
+      {
+        "name": "honey",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves"
+      }
+    ]
+  },
+  {
+    "name": "Berry Smoothie",
+    "category": "Snack",
+    "servings": 1,
+    "prep_time": 5,
+    "cook_time": 0,
+    "ingredients": [
+      {
+        "name": "berries",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "greek yogurt",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "milk",
+        "quantity": 0.5,
+        "unit": "cup"
+      }
+    ]
+  }
+]
