@@ -30,8 +30,8 @@ def search_by_ingredient(recipes, search_term):
     return [
         recipe
         for recipe in recipes
-            for ingredient in recipe
-                if search_term in recipe["ingredients"].lower()
+            if any(search_term in ingredient["name"].lower()
+                for ingredient in recipe["ingredients"])
     ]
 
 def filter_by_category(recipes, category):
