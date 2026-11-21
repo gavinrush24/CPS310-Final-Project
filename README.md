@@ -1,18 +1,17 @@
-# CPS 310 Final Project Starter
+# CPS 310 Final Project
 ## Recipe & Meal Planner
 
-This repository contains the starter code for the CPS 310 final project.
+A command-line app for browsing, searching, and filtering recipes stored in JSON.
 
-The application currently supports:
+## Features
 
 - loading recipe data from JSON
 - listing all recipes
 - searching recipes by name
+- searching recipes by ingredient
 - filtering recipes by category
 - viewing recipe details
 - loading basic configuration from `config.json`
-
-This is intentionally a **starter project**, not a finished application.
 
 ## Setup
 
@@ -34,6 +33,19 @@ python3 -m pip install -r requirements.txt
 python3 app.py
 ```
 
+## Usage
+
+When you run the app, it shows this menu:
+
+```
+1. List all recipes
+2. Search recipes by name
+3. Search recipes by ingredients
+4. Filter recipes by category
+5. View recipe details
+6. Exit
+```
+
 ## Run Tests
 
 ### Windows
@@ -48,4 +60,4 @@ python -m pytest -v
 python3 -m pytest -v
 ```
 
-You are expected to make your own design decisions as you extend the project during the final project.
+Tests run automatically on every push and pull request through GitHub Actions.

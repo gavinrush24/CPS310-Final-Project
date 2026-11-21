@@ -2,50 +2,87 @@
 
 import json
 
-from recipe_utils import filter_by_category, load_config, load_recipes, search_by_name
+import pytest
+
+from recipe_utils import (
+    filter_by_category,
+    load_config,
+    load_recipes,
+    search_by_ingredient,
+    search_by_name,
+)
+
+CHICKEN = {
+    "name": "Chicken Alfredo",
+    "category": "Dinner",
+    "ingredients": [
+        {"name": "chicken breast"},
+        {"name": "fettuccine"},
+        {"name": "parmesan cheese"},
+    ],
+}
+SMOOTHIE = {
+    "name": "Berry Smoothie",
+    "category": "Snack",
+    "ingredients": [
+        {"name": "strawberries"},
+        {"name": "banana"},
+        {"name": "yogurt"},
+    ],
+}
+PASTA = {
+    "name": "Tomato Pasta",
+    "category": "Dinner",
+    "ingredients": [
+        {"name": "spaghetti"},
+        {"name": "tomato sauce"},
+        {"name": "mozzarella cheese"},
+        {"name": "parmesan cheese"},
+    ],
+}
 
 
-def test_search_by_name_finds_partial_match():
-    recipes = [
-        {"name": "Chicken Alfredo", "category": "Dinner"},
-        {"name": "Berry Smoothie", "category": "Snack"},
-    ]
-    result = search_by_name(recipes, "chicken")
-    assert result == [{"name": "Chicken Alfredo", "category": "Dinner"}]
+@pytest.fixture
+def recipes():
+    return [CHICKEN, SMOOTHIE, PASTA]
 
 
-def test_search_by_name_is_case_insensitive():
-    recipes = [
-        {"name": "Chicken Alfredo", "category": "Dinner"},
-        {"name": "Berry Smoothie", "category": "Snack"},
-    ]
-    result = search_by_name(recipes, "SMOOTHIE")
-    assert result == [{"name": "Berry Smoothie", "category": "Snack"}]
+@pytest.mark.parametrize(
+    "term, expected",
+    [
+        ("chicken", [CHICKEN]),
+        ("SMOOTHIE", [SMOOTHIE]),
+        ("pizza", []),
+    ],
+    ids=["partial_match", "case_insensitive", "no_match"],
+)
+def test_search_by_name(recipes, term, expected):
+    assert search_by_name(recipes, term) == expected
 
 
-def test_search_by_name_returns_empty_list_when_no_match():
-    recipes = [{"name": "Chicken Alfredo", "category": "Dinner"}]
-    assert search_by_name(recipes, "pizza") == []
+@pytest.mark.parametrize("category", ["Dinner", "dinner"], ids=["exact", "case_insensitive"])
+def test_filter_by_category(recipes, category):
+    assert filter_by_category(recipes, category) == [CHICKEN, PASTA]
 
 
-def test_filter_by_category_returns_matching_recipes():
-    recipes = [
-        {"name": "Chicken Alfredo", "category": "Dinner"},
-        {"name": "Berry Smoothie", "category": "Snack"},
-        {"name": "Tomato Pasta", "category": "Dinner"},
-    ]
-    result = filter_by_category(recipes, "Dinner")
-    assert result == [
-        {"name": "Chicken Alfredo", "category": "Dinner"},
-        {"name": "Tomato Pasta", "category": "Dinner"},
-    ]
+@pytest.mark.parametrize(
+    "term, expected",
+    [
+        ("fettuccine", [CHICKEN]),
+        ("straw", [SMOOTHIE]),
+        ("BANANA", [SMOOTHIE]),
+        ("pizza dough", []),
+        ("cheese", [CHICKEN, PASTA]),
+    ],
+    ids=["full_name", "partial_match", "case_insensitive", "no_match", "no_duplicates"],
+)
+def test_search_by_ingredient(recipes, term, expected):
+    assert search_by_ingredient(recipes, term) == expected
 
 
-def test_filter_by_category_is_case_insensitive():
-    recipes = [{"name": "Chicken Alfredo", "category": "Dinner"}]
-    assert filter_by_category(recipes, "dinner") == [
-        {"name": "Chicken Alfredo", "category": "Dinner"}
-    ]
+def test_search_by_ingredient_handles_empty_ingredients():
+    recipes = [{"name": "Plain Water", "category": "Drink", "ingredients": []}]
+    assert search_by_ingredient(recipes, "water") == []
 
 
 def test_load_config_reads_json(tmp_path):
