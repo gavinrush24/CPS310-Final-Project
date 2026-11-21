@@ -24,6 +24,15 @@ def search_by_name(recipes, search_term):
         if search_term in recipe["name"].lower()
     ]
 
+def search_by_ingredient(recipes, search_term):
+    """Return recipes whose ingredients contain the search term."""
+    search_term = search_term.lower()
+    return [
+        recipe
+        for recipe in recipes
+            for ingredient in recipe
+                if search_term in recipe["ingredients"].lower()
+    ]
 
 def filter_by_category(recipes, category):
     """Return recipes that match the requested category."""
