@@ -1,7 +1,7 @@
 # CPS 310 Final Project
 ## Recipe & Meal Planner
 
-A command-line app for browsing, searching, and filtering recipes stored in JSON.
+A command-line app for browsing, searching, filtering, and scaling recipes stored in JSON.
 
 ## Features
 
@@ -11,6 +11,7 @@ A command-line app for browsing, searching, and filtering recipes stored in JSON
 - searching recipes by ingredient
 - filtering recipes by category
 - viewing recipe details
+- scaling a recipe to a new number of servings
 - loading basic configuration from `config.json`
 
 ## Setup
@@ -43,7 +44,8 @@ When you run the app, it shows this menu:
 3. Search recipes by ingredients
 4. Filter recipes by category
 5. View recipe details
-6. Exit
+6. Scale recipe servings
+7. Exit
 ```
 
 ## Run Tests
