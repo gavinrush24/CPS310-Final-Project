@@ -42,3 +42,16 @@ def filter_by_category(recipes, category):
         for recipe in recipes
         if recipe["category"].lower() == category
     ]
+
+
+def scale_recipe(recipe, new_servings):
+    """Return a copy of the recipe with ingredient quantities scaled to new_servings.
+
+    Quantities are rounded to 2 decimal places. The original recipe is not changed.
+    """
+    scale_factor = new_servings / recipe["servings"]
+    scaled_ingredients = [
+        {**ingredient, "quantity": round(ingredient["quantity"] * scale_factor, 2)}
+        for ingredient in recipe["ingredients"]
+    ]
+    return {**recipe, "servings": new_servings, "ingredients": scaled_ingredients}
