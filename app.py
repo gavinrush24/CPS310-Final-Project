@@ -1,6 +1,13 @@
 """CPS 310 Recipe & Meal Planner starter application."""
 
-from recipe_utils import filter_by_category, load_config, load_recipes, search_by_name, search_by_ingredient
+from recipe_utils import (
+    filter_by_category,
+    load_config,
+    load_recipes,
+    scale_recipe,
+    search_by_ingredient,
+    search_by_name,
+)
 
 
 def display_recipe(recipe):
@@ -28,23 +35,49 @@ def list_recipes(recipes):
         print(f"{index}. {recipe['name']} ({recipe['category']})")
 
 
-def choose_recipe(recipes):
-    """Prompt the user to select and view a recipe."""
+def select_recipe(recipes):
+    """Prompt the user to pick a recipe. Return it, or None if the selection is invalid."""
     list_recipes(recipes)
     if not recipes:
-        return
+        return None
 
     try:
         selection = int(input("\nEnter recipe number: "))
     except ValueError:
         print("Invalid selection.")
-        return
+        return None
 
     if selection < 1 or selection > len(recipes):
         print("Invalid selection.")
+        return None
+
+    return recipes[selection - 1]
+
+
+def choose_recipe(recipes):
+    """Prompt the user to select and view a recipe."""
+    recipe = select_recipe(recipes)
+    if recipe is not None:
+        display_recipe(recipe)
+
+
+def scale_selected_recipe(recipes):
+    """Prompt the user to pick a recipe and a new serving size, then show the scaled recipe."""
+    recipe = select_recipe(recipes)
+    if recipe is None:
         return
 
-    display_recipe(recipes[selection - 1])
+    try:
+        new_servings = int(input(f"Enter new number of servings (currently {recipe['servings']}): "))
+    except ValueError:
+        print("Invalid servings. Please enter a whole number.")
+        return
+
+    if new_servings <= 0:
+        print("Invalid servings. Please enter a number greater than 0.")
+        return
+
+    display_recipe(scale_recipe(recipe, new_servings))
 
 
 def main():
@@ -60,7 +93,8 @@ def main():
         print("3. Search recipes by ingredients")
         print("4. Filter recipes by category")
         print("5. View recipe details")
-        print("6. Exit")
+        print("6. Scale recipe servings")
+        print("7. Exit")
 
         choice = input("\nChoose an option: ").strip()
 
@@ -78,10 +112,12 @@ def main():
         elif choice == "5":
             choose_recipe(recipes)
         elif choice == "6":
+            scale_selected_recipe(recipes)
+        elif choice == "7":
             print("Goodbye!")
             break
         else:
-            print("Invalid option. Please choose 1-6.")
+            print("Invalid option. Please choose 1-7.")
 
 
 if __name__ == "__main__":
